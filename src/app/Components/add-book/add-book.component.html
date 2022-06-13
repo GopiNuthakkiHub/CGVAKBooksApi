@@ -1,0 +1,141 @@
+<div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        data-bs-whatever="@mdo">AddBook</button>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Book</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="BookForm" (ngSubmit)="submit()">
+                    <div>
+                        <div class="form-group">
+                            <label for="id" class="form-label">ID:</label>
+                            <input type="id" id="id" name="id"   class="form-control" formControlName="id" placeholder="Title">
+                            <div *ngIf="f['id'].touched && f['id'].invalid">
+                                <div *ngIf="f['id'].errors && f['id'].errors['required']" class="alert alert-danger">Id Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="form-group">
+                            <label for="title" class="form-label">Title:</label>
+                            <input type="text" id="Title" name="Title"   class="form-control" formControlName="title" placeholder="Title">
+                            <div *ngIf="f['title'].touched && f['title'].invalid">
+                                <div *ngIf="f['title'].errors && f['title'].errors['required']" class="alert alert-danger">Title Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <label for="Description" class="form-label">Description:</label>
+                            <textarea rows="3" id="Description" name="Description"  class="form-control"
+                            formControlName="description"  placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ISBN" class="form-label">ISBN:</label>
+                                <input type="text" id="ISBN" name="ISBN" class="form-control"   
+                                formControlName="isbn" placeholder="ISBN">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Author" class="form-label">Author:</label>
+                                <input type="text" id="Author" name="Author" class="form-control"
+                                formControlName="author" placeholder="Author">
+                                <div *ngIf="f['author'].touched && f['author'].invalid">
+                                    <div *ngIf="f['author'].errors && f['author'].errors['required']" class="alert alert-danger">Author Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ListPrice" class="form-label">ListPrice:</label>
+                                <input type="text" id="ListPrice" name="ListPrice" class="form-control"
+                                formControlName="listPrice" placeholder="ListPrice">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Price" class="form-label">Price:</label>
+                                <input type="text" id="Price" name="Price" class="form-control" 
+                                formControlName="price" placeholder="Price">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Price50" class="form-label">Price50:</label>
+                                <input type="text" id="Price50" name="Price50" class="form-control"
+                                formControlName="price50" placeholder="Price50">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Price100" class="form-label">Price100:</label>
+                                <input type="text" id="Price100" name="Price100" class="form-control"
+                                formControlName="price100"  placeholder="Price100">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="imageUrl" class="form-label">imageUrl:</label>
+                                <input type="text" id="imageUrl" name="imageUrl" class="form-control"
+                                formControlName="imageUrl" placeholder="imageUrl">
+                                <div *ngIf="f['imageUrl'].touched && f['imageUrl'].invalid">
+                                    <div *ngIf="f['imageUrl'].errors && f['imageUrl'].errors['required']" class="alert alert-danger">Image Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="categoryID" class="form-label">categoryID:</label>
+                                <input type="text" id="categoryID" name="categoryID" class="form-control"
+                                    formControlName="categoryID" placeholder="categoryID">
+                            </div>
+                        </div> -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Category" class="form-label">Category:</label>
+                                <input type="text" id="Category" name="Category" class="form-control"
+                                formControlName="category"  placeholder="Category">
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="coverTypeId" class="form-label">coverTypeId:</label>
+                                <input type="text" id="coverTypeId" name="coverTypeId" class="form-control"
+                                    formControlName="coverTypeId" placeholder="coverTypeId">
+                            </div>
+                        </div> -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="CoverType" class="form-label">CoverType:</label>
+                                <input type="text" id="CoverType" name="CoverType" class="form-control"
+                                formControlName="coverType" placeholder="CoverType">
+                            </div>
+                        </div>
+                      
+                     
+                     
+                    </div>
+                     <button class="btn btn-primary mt-3" [disabled]="!BookForm.valid" type="submit" >AddBook</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" #closebutton  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!-- <button type="submit" class="btn btn-primary">Create</button> -->
+            </div>
+        </div>
+    </div>
+</div>
